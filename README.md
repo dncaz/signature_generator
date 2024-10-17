@@ -1,4 +1,5 @@
 Email Signature Generator
+
 This is a simple Email Signature Generator built with HTML, CSS, and JavaScript. It allows users to create custom email signatures based on their department, signature style, and email client preferences (Outlook or Thunderbird). The tool generates the HTML code for the signature, which can be copied and used directly in email applications.
 
 Features:
