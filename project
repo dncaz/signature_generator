@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Assinatura de E-mail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="#444444" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 24px 24px;
+            cursor: pointer;
+        }
+
+        .radio-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .radio-container input[type="radio"] {
+            display: none;
+        }
+
+        .radio-container label {
+            display: inline-block;
+            background-color: #ADD8E6;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .radio-container label:hover {
+            background-color: #ddd;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        button {
+            background-color: #34568B;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: 2px solid #1E3F66;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #1E3F66;
+        }
+
+        #thunderbirdTutorial,
+        #outlookTutorial {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        #thunderbirdTutorial h3,
+        #outlookTutorial h3 {
+            margin-top: 0;
+        }
+
+        #thunderbirdTutorial ol,
+        #outlookTutorial ol {
+            padding-left: 20px;
+        }
+
+        #thunderbirdTutorial p,
+        #outlookTutorial p {
+            margin-bottom: 10px;
+        }
+
+        #generatedHTML {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            white-space: pre-wrap;
+        }
+
+        h5 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .radio-container input[type="radio"]:checked + label {
+            background-color: lightyellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="htmlForm">
+        <label for="name">Insira o Nome Que Deseja Colocar na Assinatura:</label>
+        <input type="text" id="name" name="name" placeholder="Primeiro e Último" required>
+
+        <label for="department">Departamento:</label>
+        <select id="department" name="department" required>
+            <option value="">Departamentos</option>
+            <option value="Unidade de Valbom  |  Tel. [Número Redactado]">Unidade de Valbom | Tel. [Número Redactado]</option>
+            <option value="Unidade de Prado  |  Tel. [Número Redactado]">Unidade de Prado | Tel. [Número Redactado]</option>
+            <option value="Unidade de Marrancos  |  Tel. [Número Redactado]">Unidade de Marrancos | Tel. [Número Redactado]</option>
+            <option value="Farmácia Externa  |  Tel. [Número Redactado]">Farmácia Externa | Tel. [Número Redactado]</option>
+            <option value="CAO e Lar Residencial  |  Tel. [Número Redactado]">CAO e Lar Residencial | Tel. [Número Redactado]</option>
+            <option value="Laboratório de Análises Clínicas  |  Tel. [Número Redactado]">Laboratório de Análises Clínicas | Tel. [Número Redactado]</option>
+            <option value="Medicina Física e Reabilitação  |  Tel. [Número Redactado]">Medicina Física e Reabilitação | Tel. [Número Redactado]</option>
+            <option value="Aprovisionamento  |  Tel. [Número Redactado]">Aprovisionamento | Tel. [Número Redactado]</option>
+            <option value="Segurança e Saúde no Trabalho   |  Tel. [Número Redactado]">Segurança e Saúde no Trabalho | Tel. [Número Redactado]</option>
+            <option value="Dep. Recursos Humanos e Formação  |  Tel. [Número Redactado]">Dep. Recursos Humanos e Formação | Tel. [Número Redactado]</option>
+            <option value="Dep. Contabilidade e Gestão  |  Tel. [Número Redactado]">Dep. Contabilidade e Gestão | Tel. [Número Redactado]</option>
+            <option value="Dep. Qualidade e Comunicação  |  Tel. [Número Redactado]">Dep. Qualidade e Comunicação | Tel. [Número Redactado]</option>
+            <option value="Serviço Instalações e Equipamentos  |  Tel. [Número Redactado]">Serviço Instalações e Equipamentos | Tel. [Número Redactado]</option>
+            <option value="Unidades Cuidados Integrados Continuados">Unidades Cuidados Integrados Continuados</option>
+            <option value="UCCI-ULDM | Longa Duração">UCCI-ULDM | Longa Duração</option>
+            <option value="UCCI-UMDR | Média Duração">UCCI-UMDR | Média Duração</option>
+            <option value="UCCI-UC | Convalescença">UCCI-UC | Convalescença</option>
+            <option value="Colégio D. João de Aboim">Colégio D. João de Aboim</option>
+            <option value="UL-PPCIRA ">UL-PPCIRA </option>
+            <option value="Santa Casa da Misericórdia de Vila Verde">Santa Casa da Misericórdia de Vila Verde</option>
+            <option value="Hospital Misericórdia Vila Verde">Hospital Misericórdia Vila Verde</option>
+        </select>
+
+        <div id="signatureOptions">
+
+            <label for="signatureType">Escolha a Assinatura Mais Apropriada:</label>
+            <select id="signatureType" name="signatureType">
+                <option value="">Assinaturas</option>
+                <option value="1">Santa Casa da Misericórdia de Vila Verde</option>
+                <option value="2">Hospital da Santa Casa da Misericórdia de Vila Verde</option>
+                <option value="3">Unidade de Cuidados Continuados Integrados</option>
+                <option value="4">Colégio Dom João de Aboim</option>
+            </select>
+        </div>
+        <br>
+        <label style="text-align: center" for="emailProvider" >Em Que Programa Vai Usar o Seu E-mail:</label>
+        <div class="radio-container">
+            <input type="radio" id="outlook" name="emailProvider" value="Outlook">
+            <label for="outlook">Outlook</label>
+
+            <input type="radio" id="thunderbird" name="emailProvider" value="Thunderbird">
+            <label for="thunderbird">Thunderbird</label>
+        </div>
+
+        <div class="button-container">
+            <button type="button" onclick="generateHTML()">Gerar Assinatura</button>
+        </div>
+    </form>
+    
+    <div id="generatedHTML"></div>
+    
+    <div id="outlookTutorial" style="display:none;">
+        <h3>Como Adicionar a Assinatura no Outlook:</h3>
+        <ol>
+            <li>Abra o Outlook.</li>
+            <li>Vá até as "Definições" (canto superior direito).</li>
+            <li>Selecione "Ver Todas as Definições do Outlook".</li>
+            <li>Vá até "Redigir e Responder".</li>
+            <li>Cole o HTML Gerado na Caixa de Assinatura.</li>
+            <li>Guarde as Alterações.</li>
+        </ol>
+    </div>
+
+    <div id="thunderbirdTutorial" style="display:none;">
+        <h3>Como Adicionar a Assinatura no Thunderbird:</h3>
+        <ol>
+            <li>Abra o Thunderbird.</li>
+            <li>Vá para "Definições de Conta".</li>
+            <li>Escolha "Ficheiro de Assinatura HTML".</li>
+            <li>Guarde o Ficheiro Gerado e Selecione-o.</li>
+        </ol>
+    </div>
+
+    <script>
+        function generateHTML() {
+            var name = document.getElementById("name").value;
+            var department = document.getElementById("department").value;
+            var signatureType = document.getElementById("signatureType").value;
+            var emailProvider = document.querySelector('input[name="emailProvider"]:checked').value;
+
+            var generatedHTML = `<p> ${name} </p><p> ${department} </p><p> ${signatureType} </p>`;
+            
+            document.getElementById("generatedHTML").innerHTML = generatedHTML;
+
+            if (emailProvider === "Outlook") {
+                document.getElementById("outlookTutorial").style.display = "block";
+                document.getElementById("thunderbirdTutorial").style.display = "none";
+            } else if (emailProvider === "Thunderbird") {
+                document.getElementById("outlookTutorial").style.display = "none";
+                document.getElementById("thunderbirdTutorial").style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
